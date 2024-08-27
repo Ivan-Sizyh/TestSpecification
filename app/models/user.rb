@@ -10,12 +10,12 @@ class User < ApplicationRecord
   validates :surname, presence: true
   validates :name, presence: true
   validates :patronymic, presence: true
-  validates :email, presence: true
-  validates :age, presence: true
   validates :nationality, presence: true
   validates :country, presence: true
-  validates :gender, presence: true
-  validates :email, uniqueness: true
-  validates :age, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 90 }
-  validates :gender, inclusion: { in: %w[male female] }
+  validates :email, presence: true,
+                    uniqueness: true
+  validates :age, presence: true,
+                  numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than: 90 }
+  validates :gender, presence: true,
+                     inclusion: { in: %w[male female] }
 end
